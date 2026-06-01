@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class RadialBlurScript : MonoBehaviour
 {
     [Header("Imports for shader value to update")]
     [SerializeField] private Material radialBlur;
+    [SerializeField] private Slider slider;
 
     private bool enabled = false;
 
@@ -36,4 +36,8 @@ public class RadialBlurScript : MonoBehaviour
         radialBlur.SetInteger("_Enabled", Convert.ToInt32(enabled));
     }
 
+    public void OnSliderUpdate()
+    {
+        radialBlur.SetFloat("_BlurAmount", slider.value);
+    }
 }
